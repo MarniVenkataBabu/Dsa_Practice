@@ -58,6 +58,7 @@ public class Queue {
 	//Delete
 	public void delete() {
 		arr = null;
+		System.out.println("The Queue is deleted successfully!");
 	}
 	
 	

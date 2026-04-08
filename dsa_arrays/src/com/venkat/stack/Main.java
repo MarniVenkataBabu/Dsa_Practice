@@ -21,5 +21,16 @@ public class Main {
 		stack.push(6);
 		stack.push(7);
 		
+		
+		
+		StackLinkedList stackLinkedList = new StackLinkedList();
+		stackLinkedList.push(1);
+		stackLinkedList.push(4);
+		stackLinkedList.push(5);
+		stackLinkedList.push(6);
+		stackLinkedList.pop();
+		stackLinkedList.peek();
+		stackLinkedList.linkedlist.traverseSinglyLinkedList();
+		
 	}
 }

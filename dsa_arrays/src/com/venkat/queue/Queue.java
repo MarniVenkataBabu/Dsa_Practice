@@ -13,7 +13,7 @@ public class Queue {
 	}
 	//isEmpty
 	public boolean isEmpty() {
-		if(topOfQueue == -1) {
+		if(beginingOfQueue == -1 || beginingOfQueue == arr.length) {
 			System.out.println("The Queue is Empty");
 			return true;
 		}else {
@@ -44,9 +44,21 @@ public class Queue {
 	}
 	
 	//DeQueue
+	public int deQueue() {
+		int frontValue = arr[beginingOfQueue];
+		beginingOfQueue++;
+		return frontValue;
+	}
 	
+	//peek
+	public int peek() {
+		return arr[beginingOfQueue];
+	}
 	
 	//Delete
+	public void delete() {
+		arr = null;
+	}
 	
 	
 }

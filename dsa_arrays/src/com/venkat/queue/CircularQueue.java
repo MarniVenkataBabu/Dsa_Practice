@@ -38,23 +38,53 @@ public class CircularQueue {
 	//enqueue
 	public void enQueue(int value) {
 			if(isFull()) {
-				System.out.println("Unable to insert the value : "+value);
-			}else {
-				if(beginningOfQueue != 0 && topoFQueue+1 == size) {
-					topoFQueue =0;
-					arr[topoFQueue] = value;
-				}
+				System.out.println("CQ is full Unable to insert the value : "+value);
+			}else if(isEmpty()){
 				beginningOfQueue = 0;
 				topoFQueue++;
+				arr[topoFQueue] = value;
+			}else {
+				if(topoFQueue+1 == size) {
+					topoFQueue = 0;
+				}else {
+					topoFQueue++;
+				}
 				arr[topoFQueue] = value;
 			}
 		}
 		
 	//dequeue
+	public int dequeue() {
+		if(isEmpty()) {
+			System.out.println("the Queue is Empty");
+			return -1;
+		}else {
+			int result = arr[beginningOfQueue];
+			arr[beginningOfQueue] = Integer.MIN_VALUE;
+			if(beginningOfQueue == topoFQueue) {
+				beginningOfQueue =  topoFQueue= -1;
+			} else if(beginningOfQueue+1 == size) {
+				beginningOfQueue = 0;
+			}else {
+				beginningOfQueue++;
+			}
+			return result;
+		}
+	}
 		
 	//peek
-		
+	public int peek() {
+		if(isEmpty()) {
+			System.out.println("No First element Queue is Empty");
+			return -1;
+		}else {
+			return arr[beginningOfQueue];
+		} 
+	}
 	//delete
+	public void delete() {
+		arr = null;
+	}
 		
 	
 }

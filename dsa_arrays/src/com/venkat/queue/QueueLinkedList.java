@@ -17,7 +17,7 @@ public class QueueLinkedList {
 		}
 	}
 
-	// enqueue()
+	// enqueue
 	public void enqueue(int value) {
 		linkedList.insertInLinkedList(value, linkedList.size);
 	}

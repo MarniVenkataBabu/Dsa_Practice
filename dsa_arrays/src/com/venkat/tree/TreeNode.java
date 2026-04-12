@@ -14,11 +14,20 @@ public class TreeNode {
 	public void addChild(TreeNode node) {
 		this.children.add(node);
 	}
+	/*
+	 * 
+	 * print(A, 0)
+		 ├── print(B, 1)
+		 │    ├── print(D, 2)
+		 │    └── print(E, 2)
+		 └── print(C, 1)
+		      └── print(F, 2)
+	 */
 	public String print(int level) {
 		String ret;
 		ret = " ".repeat(level)+data+"\n";
 		for(TreeNode node : this.children) {
-			ret = ret + node.print(level + 1);
+			ret = ret + node.print(level +3);
 		}
 		return ret;
 	}

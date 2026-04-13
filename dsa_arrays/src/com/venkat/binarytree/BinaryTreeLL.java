@@ -56,4 +56,50 @@ public class BinaryTreeLL {
 			}
 		}
 	}
+	
+	//search for an element in the tree 
+	public void search(String value) {
+		Queue<BinaryNode> queue = new LinkedList<>();
+		queue.add(root);
+		while(!queue.isEmpty()) {
+			BinaryNode presentNode = queue.remove();
+			if(presentNode.value == value) {
+				System.out.println("The Value " +value + " is Present in the Node");
+				return;
+			}
+			if(presentNode.left != null) {
+				queue.add(presentNode.left);
+			}
+			if(presentNode.right != null) {
+				queue.add(presentNode.right);
+			}
+		}
+		System.out.println("The value is not found in the tree");
+	}
+	
+	//Insert an Node to the empty tree either left or right
+	public void insert(String value) {
+		BinaryNode newNode = new BinaryNode();
+		newNode.value = value;
+		if(root == null) {
+			root = newNode;
+			return;
+		}
+		Queue<BinaryNode> queue = new LinkedList<>();
+		queue.add(root);
+		while(!queue.isEmpty()) {
+			BinaryNode presentNode = queue.remove();
+			if(presentNode.left == null) {
+				presentNode.left = newNode;
+				break;
+			} else if(presentNode.right == null) {
+				presentNode.right = newNode;
+				break;
+			} else {
+				queue.add(presentNode.left);
+				queue.add(presentNode.right);
+			}
+		}
+	}
+	
 }

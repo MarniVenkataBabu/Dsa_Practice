@@ -80,28 +80,7 @@ public class BinaryTreeLL {
 		System.out.println("No Node with value "+value+"Found in the Tree");
 	}
 	
-	//Get the Deepest Route of the Node
-	public BinaryNode getDeepestNode() {
-		if(root == null) {
-			System.out.println("");
-			return null;
-		}
-		Queue<BinaryNode> queue = new LinkedList<>();
-		queue.add(root);
-		BinaryNode presentNode = null;
-		while(!queue.isEmpty()) {
-			presentNode = queue.remove();
-			if(presentNode.left != null) {
-				queue.add(presentNode.left);
-				
-			}
-			if(presentNode.right != null) {
-				queue.add(presentNode.right);
-			}
-		}
-		
-		return presentNode;
-	}
+
 	
 	//insert Method in BinaryTree
 	public void insert(String value) {
@@ -131,8 +110,69 @@ public class BinaryTreeLL {
 		
 	}
 	
+	//Get the Deepest Route of the Node
+	public BinaryNode getDeepestNode() {
+		if(root == null) {
+			System.out.println("");
+			return null;
+		}
+		Queue<BinaryNode> queue = new LinkedList<>();
+		queue.add(root);
+		BinaryNode presentNode = null;
+		while(!queue.isEmpty()) {
+			presentNode = queue.remove();
+			if(presentNode.left != null) {
+				queue.add(presentNode.left);
+				
+			}
+			if(presentNode.right != null) {
+				queue.add(presentNode.right);
+			}
+		}
+		
+		return presentNode;
+	}
 	
+	//Delete the Deepest Node of the Tree
+	public void deleteDeepestNode() {
+		Queue<BinaryNode> queue = new LinkedList<>();
+		queue.add(root);
+		BinaryNode previousNode , presentNode = null;
+		while(!queue.isEmpty()) {
+			previousNode = presentNode;
+			presentNode = queue.remove();
+			if(presentNode.left == null) {
+				previousNode.right = null;
+			} else if(presentNode.right == null) {
+				presentNode.left = null;
+			} else {
+				if(presentNode.left != null) queue.add(presentNode.left);
+				if(presentNode.right != null) queue.add(presentNode.right);
+			}
+		}
+		System.out.println("No Node Found");
+	}
 	
+	//Delete the given Node
+	public void removeNode(String value) {
+		Queue<BinaryNode> queue = new LinkedList<>();
+		queue.add(root);
+		while(!queue.isEmpty()) {
+			BinaryNode presentNode = queue.remove();
+			if(presentNode.value == value) {
+				presentNode.value = getDeepestNode().value;
+				deleteDeepestNode();
+				return;
+			} else {
+				if(presentNode.left != null) queue.add(presentNode.left);
+				if(presentNode.right != null) queue.add(presentNode.right);
+			}
+		}
+	}
 	
-	
+	//Delete Entire Tree
+	public void deleteTree() {
+		root = null;
+		System.out.println("The tree is deleted successfully");
+	}
 }

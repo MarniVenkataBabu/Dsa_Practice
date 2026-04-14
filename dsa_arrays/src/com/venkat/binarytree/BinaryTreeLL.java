@@ -56,4 +56,80 @@ public class BinaryTreeLL {
 			}
 		}
 	}
+	
+	//search of an element
+	public void search(String value) {
+		Queue<BinaryNode> queue = new LinkedList<BinaryNode>();
+		queue.add(root);
+		while(!queue.isEmpty()) {
+			BinaryNode presentNode = queue.remove();
+			if(presentNode.value == value) {
+				System.out.println("The Value-" + value +" is Found in Tree");
+				return;
+			}else {
+				if(presentNode.left != null) {
+					queue.add(presentNode.left);
+				}
+				if(presentNode.right != null) {
+					queue.add(presentNode.right);
+				}
+			}
+			
+			
+		}
+		System.out.println("No Node with value "+value+"Found in the Tree");
+	}
+	
+	//Get the Deepest Route of the Node
+	public String getDeepestNode() {
+		if(root == null) {
+			System.out.println("");
+			return null;
+		}
+		Queue<BinaryNode> queue = new LinkedList<>();
+		queue.add(root);
+		BinaryNode presentNode = null;
+		while(!queue.isEmpty()) {
+			presentNode = queue.remove();
+			if(presentNode.left != null) {
+				queue.add(presentNode.left);
+				
+			}
+			if(presentNode.right != null) {
+				queue.add(presentNode.right);
+			}
+		}
+		
+		return presentNode.value;
+	}
+	
+	//insert Method in BinaryTree
+	public void insert(String value) {
+		BinaryNode newNode = new BinaryNode();
+		newNode.value = value;
+		if(root == null) {
+			root = newNode;
+			return;
+		} 
+		Queue<BinaryNode> queue = new LinkedList<>();
+		queue.add(root);
+		BinaryNode presentNode = null;
+		while(!queue.isEmpty()) {
+			presentNode = queue.remove();
+			if(presentNode.left == null) {
+				presentNode.left = newNode;
+				break;
+			} else if(presentNode.right == null) {
+				presentNode.right = newNode;
+				break;
+			} else {
+				queue.add(presentNode.left);
+				queue.add(presentNode.right);
+			}
+			
+		}
+		
+	}
+	
+	
 }

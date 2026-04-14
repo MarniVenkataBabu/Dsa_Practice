@@ -32,6 +32,7 @@ public class Main {
 		n4.left = n8;
 		n4.right = n9;
 		
+		
 		binaryTreeLL.root = n1;
 		
 		binaryTreeLL.preOrder(n1);
@@ -41,7 +42,15 @@ public class Main {
 		binaryTreeLL.postOrder(n1);
 		System.out.println("\n");
 		binaryTreeLL.levelOrder();
-		//https://testbook.com/objective-questions/mcq-on-tree-traversal--5eea6a1139140f30f369eb98
+		
+		System.out.println("\n");
+		binaryTreeLL.search("N10");
+		System.out.println("\n");
+		System.out.println(binaryTreeLL.getDeepestNode());
+		
+		binaryTreeLL.insert("N10");
+		binaryTreeLL.levelOrder();
+		
 		
 		
 	}

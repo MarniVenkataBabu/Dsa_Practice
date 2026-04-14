@@ -52,6 +52,7 @@ public class Main {
 		binaryTreeLL.levelOrder();
 		
 		
-		
+		System.out.println("\n");
+		binaryTreeLL.search("N2");
 	}
 }

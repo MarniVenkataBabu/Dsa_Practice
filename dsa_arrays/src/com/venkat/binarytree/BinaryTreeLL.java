@@ -81,7 +81,7 @@ public class BinaryTreeLL {
 	}
 	
 	//Get the Deepest Route of the Node
-	public String getDeepestNode() {
+	public BinaryNode getDeepestNode() {
 		if(root == null) {
 			System.out.println("");
 			return null;
@@ -100,7 +100,7 @@ public class BinaryTreeLL {
 			}
 		}
 		
-		return presentNode.value;
+		return presentNode;
 	}
 	
 	//insert Method in BinaryTree

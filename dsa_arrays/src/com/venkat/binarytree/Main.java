@@ -46,7 +46,7 @@ public class Main {
 		System.out.println("\n");
 		binaryTreeLL.search("N10");
 		System.out.println("\n");
-		System.out.println(binaryTreeLL.getDeepestNode());
+		System.out.println(binaryTreeLL.getDeepestNode().value);
 		
 		binaryTreeLL.insert("N10");
 		binaryTreeLL.levelOrder();
@@ -54,5 +54,7 @@ public class Main {
 		
 		System.out.println("\n");
 		binaryTreeLL.search("N2");
+		binaryTreeLL.removeNode("N2");
+		binaryTreeLL.levelOrder();
 	}
 }

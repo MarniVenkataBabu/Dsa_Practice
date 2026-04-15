@@ -150,7 +150,7 @@ public class BinaryTreeLL {
 				if(presentNode.right != null) queue.add(presentNode.right);
 			}
 		}
-		System.out.println("No Node Found");
+		
 	}
 	
 	//Delete the given Node

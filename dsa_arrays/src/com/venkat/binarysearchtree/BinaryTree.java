@@ -92,17 +92,47 @@ public class BinaryTree {
 	}
 	
 	//Get the Minimum node
-	public BinaryNode minimumNode(BinaryNode node) {
-		
-		return node;
+	public BinaryNode minimumNode(BinaryNode root) {
+		if(root.left == null) {
+			return root;
+		}else {
+			
+			return minimumNode(root.left);
+			
+		}
 	}
 	
 	//delete a particular node in the Binary tree
-	public void deleteNode(BinaryNode node) {
-		if(node == null) {
+	public BinaryNode deleteNode(BinaryNode root, int value) {
+		if(root == null) {
 			System.out.println("No Node found to delete");
-			return;
+			return null;
+		} else if(value < root.value) {
+			root.left = deleteNode(root.left, value);
+		} else if(value > root.value) {
+			root.right = deleteNode(root.right, value);
+		} else {
+			if(root.left != null && root.right != null) {
+				BinaryNode temp = root;
+				BinaryNode minNodeForRight = minimumNode(temp.right);
+				root.value = minNodeForRight.value;
+				root.right = deleteNode(root.right,minNodeForRight.value);
+			}
+			else if(root.left != null ) {
+				root = root.left;
+			} else if (root.right != null) {
+				root = root.right;
+			}else {
+				root = null;
+			}
 		}
+		return root;
+	}
+	
+	//delete Entire BST
+	public void deleteBST() {
+		root = null;
+		System.out.println("The BST is deleted successfully");
 	}
 	
 }
